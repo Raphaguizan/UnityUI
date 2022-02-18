@@ -37,9 +37,7 @@ namespace Game.UI.Screen
         {
             var screenAux = screens.GetRandomExcept(_currentScreen);
             ShowByType(screenAux.type);
-            Debug.Log("actual sort = " + screenAux.type);
         }
-
     }
 }
 

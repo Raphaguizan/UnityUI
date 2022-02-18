@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Guizan.Util
 {
-    public static class Extension 
+    public static class Extension
     {
         public static T GetRandom<T>(this List<T> list)
         {
@@ -22,5 +23,23 @@ namespace Guizan.Util
             }
             return result;
         }
+
+#if UNITY_EDITOR
+        [MenuItem("Guizan/Create Button %#t")]
+        public static void CriateButtonWindow()
+        {
+            var newObj = Resources.Load("PFB_Button");
+            var instantiatedObj = (GameObject)MonoBehaviour.Instantiate(newObj);
+            instantiatedObj.transform.position = new Vector3(0, 0, 8);
+        }
+
+        [MenuItem("GameObject/Guizan/Create Button", false, -1)]
+        public static void CriateButton()
+        {
+            var newObj = Resources.Load("PFB_Button");
+            var instantiatedObj = (GameObject)MonoBehaviour.Instantiate(newObj, Selection.activeTransform);
+            instantiatedObj.transform.localPosition = new Vector3(0, 0, 0);
+        }
+#endif
     }
 }
