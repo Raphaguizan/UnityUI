@@ -14,11 +14,11 @@ public class Typer : MonoBehaviour
     private void Awake()
     {
         textMesh = GetComponent<TextMeshProUGUI>();
+        _text = textMesh.text;
     }
 
     private void OnEnable()
-    {
-        _text = textMesh.text;
+    { 
         textMesh.text = "";
         Write();
     }
