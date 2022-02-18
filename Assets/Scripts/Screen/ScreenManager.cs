@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Util;
+using Guizan.Util;
 
 namespace Game.UI.Screen
 {
@@ -32,6 +33,12 @@ namespace Game.UI.Screen
             Instance._currentScreen.Active(true);
         }
 
+        public void OpenRandomScreen()
+        {
+            var screenAux = screens.GetRandomExcept(_currentScreen);
+            ShowByType(screenAux.type);
+            Debug.Log("actual sort = " + screenAux.type);
+        }
 
     }
 }
